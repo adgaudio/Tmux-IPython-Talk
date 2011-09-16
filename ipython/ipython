@@ -1,4 +1,4 @@
-My talk will talk about IPython for Software Development and shell integration.  This talk will explore several, but by no means all, features of IPython.  Specifically, I hope to get everyone here jump started into using an amazing interactive computing tool.  Unfortunately, we will not review IPython's cool parallel computing capabilities, and I will gloss over a lot of features and details due to time constraints 
+My talk will talk about IPython for Software Development and shell integration.  This talk will explore several, but by no means all, features of IPython.  Specifically, I hope to get everyone here jump started into using an amazing interactive computing tool.  Unfortunately, we will not review IPython's cool parallel computing capabilities (which is a third of the library), and I will gloss over a lot of features and details due to time constraints 
 
 
 
@@ -32,7 +32,7 @@ Use Cases:
     1. As System shell
         - %sx or ! or !!
             - create a file and  !tail the file
-            - a = !tail    or    !!tail ; _
+            - a = !tail   or    !!tail ; _
             - b='from ipython' ; c = ' and me'
               !echo 'hello $b'
               !echo 'hello ${b + c}'
