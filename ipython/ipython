@@ -1,0 +1,82 @@
+My talk will talk about IPython for Software Development and shell integration.  This talk will explore several, but by no means all, features of IPython.  Specifically, I hope to get everyone here jump started into using an amazing interactive computing tool.  Unfortunately, we will not review IPython's cool parallel computing capabilities, and I will gloss over a lot of features and details due to time constraints 
+
+
+
+Main Features for daily use
+    The purpose of this section is just to give a broad overview of what's immediately available at your disposal for general ipython use.  We will go into details later.
+
+    1. Tab Completion
+    2. Object exploration with %psearch ; ? or %pdoc (ie  foobar = 1 ; *oo*?  ) ; ?? or %psource; %pfile; %who; %whos...
+    3. Magic Functions: %lsmagic and %magic?
+        There are a lot of useful magic functions, and we will only have time to explore some of them.
+        - %history, %run, %edit, %cd
+        - general use/miscellaneous: %reset, %timeit, %paste, %autocall and /, %autoquote and , or ;
+        - define your own magic: a = get_ipython() ; a.define_magic('name', function)
+    4. Customized configuration and Profiles:  this is new since July
+        - Built from scratch, heavily based off of Enthought traitlets, pure python
+        - Can be very simple or really complicated, as you choose.  Everything can be configured.
+            - from interpreter: get_ipython()
+            - from config file: config/ipython/profile_default2 (example from enthought)
+            - IPython exposes all configurable options on the command-line
+            - 4 main concepts: Configuration Object, Application (applies Config object to Configurables), Configurable (implements Application's logic), SingletonConfigurable (only 1 instance - lets us connect into an Application instance)
+            - Extensions: advanced config that gives access to the running IPython instance
+                - Plugins: extensions load plugins which add new capabilities
+    5. History
+        - %pushd, %popd, %dhist, %cd (!cd won't work)
+        - _, __, and ___, _ih, _oh, %hist -g <regexp>
+        - retains input in a database.  logs session input. search sessions.
+        - advanced history example:  a = get_ipython.history_manager ; a.search("zip*")
+Use Cases:
+    In this section, we will use IPython to accomplish some basic tasks.  Each successive subsection will show a few more IPython features, run through examples, and demo something that takes a little configuration or extra effort, or something that just doesn't work yet.
+
+    1. As System shell
+        - %sx or ! or !!
+            - create a file and  !tail the file
+            - a = !tail    or    !!tail ; _
+            - b='from ipython' ; c = ' and me'
+              !echo 'hello $b'
+              !echo 'hello ${b + c}'
+        - %alias - magic functions that are system shell cmds
+            - %rehashx - not that this doesn't mess up your namespace :)
+            - a = get_ipython() ; a.alias_manager.define_alias('laaa', 'ls %s')
+        - SList grep, fields, sort, .l, .n, .p (path manipulations!)
+            - a = !ls -l
+            - a.fields() ; a.grep(r'^d').fields(-1).p ... !!!
+        - exercise1: Use above cmds to ls -l // !echo show table status|mysql -uroot
+            - get field, get abs path, get table names and size?  
+            - We can do plotting with this, which we will see later
+        - exercise2: port .bashrc aliases into ipython
+
+    2. Code Development and Debugging
+        - %macro (make a macro from above code. use it, then turn it into a script)
+        - Show different workflow possibilities 
+        - %edit (-p, ) (go over options and show example usage)
+        - %run  (go over options and show example usage): run -p, run -d
+        - %pdb, %xmode (changes way tracebacks appear)
+        - embedding ipython
+        Others:
+        - %doctest_mode
+        - Vim integration? currently broken, but ipython install ships with ipython.vim plugin somewhere in your filesystem...
+
+    3. Interactive data exploration
+        - IPython.embed() (example of data exploration)
+            - Lets you see code in its own namespace, so changes to variables won't affect program execution
+            - A view on data, plots, functions, etc
+            - multidb_query.py example
+        - %gui, ipython --pylab=['tk', 'qt', 'wx', 'gtk', 'osx'], ipython-qtconsole
+        - %pylab, plot()
+    
+        - python-qtconsole --pylab=inline- Gui Integration for and visualization/plotting capabilities
+            - %loadpy, custom fonts, pictures
+        - pandas!!!??? TODO: can I pipe output from my multidb_query.py into pandas?
+    6. Parallel Computing???
+
+
+
+http://fperez.org/talks/0702_pycon_ipython.pdf
+
+http://www.quora.com/What-is-IPython-and-why-would-I-want-to-use-it?q=ipython
+
+
+
+

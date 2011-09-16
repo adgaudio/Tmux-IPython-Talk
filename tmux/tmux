@@ -1,0 +1,41 @@
+The purpose of this talk is to explore tmux is and get everyone started using it. In the first part of this section, we will talk about what tmux is and can do.  I will compare tmux to screen, present the client-server model, and show you how sessions, windows and panes work.  In the second part of this section, we will look at some configuration options, an example tmux script, and use a backup script to save your sessions.  Last, we will see one or two ways you can organize your work environment.
+
+1. What is tmux?
+    - tmux is a terminal multiplexer, which means it lets you organize and work with several terminals simultaneously.  
+    - from its website: tmux is a terminal multiplexer: it enables a number of terminals (or windows), each running a separate program, to be created, accessed, and controlled from a single screen. tmux may be detached from a screen and continue running in the background, then later reattached.
+2  tmux vs Screen
+    Similarities:
+        - Multiplexer
+        - Persistence
+        - Shared 'sessions'
+        - Poor mouse support (tmux is improving!)
+    tmux:
+        - Client-Server model
+            - screen doesn't enable switching between sessions
+        - Panes, easy window splitting
+        - Easily Scriptable
+        - Multiple Paste buffers.
+        - Active development, cleaner code!
+    Screen:
+        - Logging
+    - For more details, see the FAQ.  It's pretty good.
+3. Client-Server model, sockets (screen-sharing!  weird forms of nested tmux)
+4. Sessions, Windows and Panes
+5. Customized Profile, man page and different options
+6. Easily scriptable - tmux-sessions.sh   ... look on github!
+7. What is it useful for?
+    - Managing and organizing your projects effectively
+        - EX: Putting all your daemons, background jobs, and insane system monitoring stuff in one place
+        - tslime: vim plugin (https://github.com/xaviershay/tslime.vim.git)
+    - Remote machines: Distributed Computing problem
+        - Nested tmux sessions (you can even nest sessions on your own machine, but that's just crazy!)
+            - you may want to apply a patch or use a different config.
+                - $ diff -c .tmux.conf > tmuxconf.patch  ...  $ patch .tmux.conf tmuxconf.patch
+        - Synchronized panes, pane splitting in nested scenarios
+    - No More nohup!
+    - Screen sharing 
+8. What's it not useful for?
+    - Working with the mouse.  Managing vim, tmux, and system buffers are a pain. Mouse improvement is on their todo...
+    - Gui usage.
+    - This buffer business is a pain in the ass.  vim, tmux and system buffers?!
+
